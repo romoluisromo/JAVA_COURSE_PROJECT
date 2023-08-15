@@ -9,6 +9,7 @@ public class Licencia extends JFrame implements ChangeListener, ActionListener{
   private JTextArea textarea1;
   private JCheckBox check1;
   private JButton boton1, boton2;
+  private JScrollPane scrollpane1;
   String rutalogo = "images/coca-cola.png", rutaicon = "images/icon.png";
   
   public Licencia(){
@@ -18,28 +19,38 @@ public class Licencia extends JFrame implements ChangeListener, ActionListener{
     
     ImageIcon logo = new ImageIcon(rutalogo);
     label1 = new JLabel(logo);
-    label1.setBounds(280,150,200,100);
+    label1.setBounds(280,210,300,170);
     add(label1);
 
     label2 = new JLabel("TÉRMINOS Y CONDICIONES");
-    label2.setBounds(100,20,300,40);
+    label2.setBounds(150,20,300,40);
     label2.setFont(new Font("Andale Mono", 1, 18));
     add(label2);
 
+    textarea1 = new JTextArea();
+    textarea1.setEditable(false);
+    textarea1.setFont(new Font("Andale Mono", 0, 14));
+    textarea1.setForeground(new Color(0,0,0));
+    textarea1.setText("Terminos y condiciones:");
+    scrollpane1 = new JScrollPane(textarea1);
+    scrollpane1.setBounds(20,80,520,160);
+    add(scrollpane1);
+    
     check1 = new JCheckBox("Yo Acepto");
-    check1.setBounds(20,200,100,30);
+    check1.setBounds(20,250,100,30);
     check1.addChangeListener(this);
     add(check1);
     
     boton1 = new JButton("Continuar");
-    boton1.setBounds(20,250,100,30);
+    boton1.setBounds(20,300,100,30);
     boton1.addActionListener(this);
     boton1.setEnabled(false);
     add(boton1);
 
     boton2 = new JButton("No Acepto");
-    boton2.setBounds(150,250,100,30);
+    boton2.setBounds(150,300,100,30);
     boton2.addActionListener(this);
+    boton2.setEnabled(true);
     add(boton2);
     
   }
@@ -65,7 +76,7 @@ public class Licencia extends JFrame implements ChangeListener, ActionListener{
 
   public static void main(String args[]){
     Licencia licencia = new Licencia();
-    licencia.setBounds(0,0,700,400);
+    licencia.setBounds(0,0,580,400);
     licencia.setVisible(true);
     licencia.setResizable(false);
     licencia.setLocationRelativeTo(null);
