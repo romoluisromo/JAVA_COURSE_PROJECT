@@ -4,13 +4,16 @@ import java.awt.event.*;
 
 public class Principal extends JFrame implements ActionListener{
 
-  private JLabel label1, label2, label3, label4, label5, label6, label7, label8, label9, label10;
+  private JLabel labelLogo, labelBienvenido, labelTitle, labelNombre, labelAPaterno, 
+                 labelAMaterno, labelDepartamento, labelAntiguedad, labelResultado, 
+                 labelFooter;
   private JMenuBar menubar;
-  private JMenu menu1, menu2, menu3, menu4;
-  private JMenuItem menuitem1, menuitem2, menuitem3, menuitem4, menuitem5, menuitem6, menuitem7;
-  private JTextField textfield1, textfield2, textfield3;
+  private JMenu menuOpciones, menuColorFondo, menuCalcular, menuAcercaDe;
+  private JMenuItem miCalculo, miRojo, miNegro, miMorado, miElCreador, miSalir, miNuevo;
+  private JTextField txtNombreTrabajador, txtAPaternoTrabajador, txtAMaternoTrabajador;
+  private JScrollPane scrollpane1;
   private JTextArea textarea1;
-  private JComboBox combo1, combo2;
+  private JComboBox comboDepartamento, comboAntiguedad;
   String rutaicon = "images/icon.png";
   String rutalogo = "images/logo-coca.png";
 
@@ -21,85 +24,191 @@ public class Principal extends JFrame implements ActionListener{
     setIconImage(new ImageIcon(getClass().getResource(rutaicon)).getImage());
 
     menubar = new JMenuBar();
+    menubar.setBackground(new Color(255,0,0));
     setJMenuBar(menubar);
 
-    menu1 = new JMenu("Opciones");
-    menubar.add(menu1);
+    menuOpciones = new JMenu("Opciones");
+    menuOpciones.setBackground(new Color(255,0,0));
+    menuOpciones.setFont(new Font("Andale Mono", 1, 14));
+    menuOpciones.setForeground(new Color(255,255,255));
+    menubar.add(menuOpciones);
 
-    menu2 = new JMenu("Color de fondo");
-    menu1.add(menu2);
+    menuColorFondo = new JMenu("Color de fondo");
+    menuColorFondo.setBackground(new Color(255,0,0));
+    menuColorFondo.setFont(new Font("Andale Mono", 1, 14));
+    menuColorFondo.setForeground(new Color(255,0,0));
+    menuOpciones.add(menuColorFondo);
 
-    menu3 = new JMenu("Calcular");
-    menubar.add(menu3);
+    menuCalcular = new JMenu("Calcular");
+    menuCalcular.setBackground(new Color(255,0,0));
+    menuCalcular.setFont(new Font("Andale Mono", 1, 14));
+    menuCalcular.setForeground(new Color(255,255,255));
+    menubar.add(menuCalcular);
 
-    menu4 = new JMenu("Acerca de");
-    menubar.add(menu4);
+    menuAcercaDe = new JMenu("Acerca de");
+    menuAcercaDe.setBackground(new Color(255,0,0));
+    menuAcercaDe.setFont(new Font("Andale Mono", 1, 14));
+    menuAcercaDe.setForeground(new Color(255,255,255));
+    menubar.add(menuAcercaDe);
 
-    menuitem1 = new JMenuItem("Rojo");
-    menuitem1.addActionListener(this);
-    menu2.add(menuitem1);    
+    miRojo = new JMenuItem("Rojo");
+    miRojo.setFont(new Font("Andale Mono", 1, 14));
+    miRojo.setForeground(new Color(255,0,0));
+    miRojo.addActionListener(this);
+    menuColorFondo.add(miRojo);    
 
-    menuitem2 = new JMenuItem("Negro");
-    menuitem2.addActionListener(this);
-    menu2.add(menuitem2);  
+    miNegro = new JMenuItem("Negro");
+    miNegro.setFont(new Font("Andale Mono", 1, 14));
+    miNegro.setForeground(new Color(255,0,0));
+    miNegro.addActionListener(this);
+    menuColorFondo.add(miNegro);  
 
-    menuitem3 = new JMenuItem("Morado");
-    menuitem3.addActionListener(this);
-    menu2.add(menuitem3);  
+    miMorado = new JMenuItem("Morado");
+    miMorado.setFont(new Font("Andale Mono", 1, 14));
+    miMorado.setForeground(new Color(255,0,0));
+    miMorado.addActionListener(this);
+    menuColorFondo.add(miMorado);  
 
-    menuitem4 = new JMenuItem("Nuevo");
-    menuitem4.addActionListener(this);
-    menu1.add(menuitem4);  
+    miNuevo = new JMenuItem("Nuevo");
+    miNuevo.setFont(new Font("Andale Mono", 1, 14));
+    miNuevo.setForeground(new Color(255,0,0));
+    miNuevo.addActionListener(this);
+    menuOpciones.add(miNuevo);  
 
-    menuitem5 = new JMenuItem("Salir");
-    menuitem5.addActionListener(this);
-    menu1.add(menuitem5);  
+    miSalir = new JMenuItem("Salir");
+    miSalir.setFont(new Font("Andale Mono", 1, 14));
+    miSalir.setForeground(new Color(255,0,0));
+    miSalir.addActionListener(this);
+    menuOpciones.add(miSalir);  
 
-    menuitem6 = new JMenuItem("Vacaciones");
-    menuitem6.addActionListener(this);
-    menu3.add(menuitem6);  
+    miCalculo = new JMenuItem("Vacaciones");
+    miCalculo.setFont(new Font("Andale Mono", 1, 14));
+    miCalculo.setForeground(new Color(255,0,0));
+    miCalculo.addActionListener(this);
+    menuCalcular.add(miCalculo);  
 
-    menuitem7 = new JMenuItem("El creador");
-    menuitem7.addActionListener(this);
-    menu4.add(menuitem7);  
+    miElCreador = new JMenuItem("El creador");
+    miElCreador.setFont(new Font("Andale Mono", 1, 14));
+    miElCreador.setForeground(new Color(255,0,0));
+    miElCreador.addActionListener(this);
+    menuAcercaDe.add(miElCreador);  
  
     ImageIcon logo = new ImageIcon(rutalogo);    
-    label1 = new JLabel(logo);
-    label1.setBounds(5,5,230,80);
-    add(label1);
+    labelLogo = new JLabel(logo);
+    labelLogo.setBounds(5,5,230,80);
+    add(labelLogo);
     
-    label2 = new JLabel("Bienvenido");
-    label2.setBounds(290,30,200,40);
-    label2.setFont(new Font("Andale Mono", 1, 30));
-    label2.setForeground(new Color(255,255,255));
-    add(label2);
+    labelBienvenido = new JLabel("Bienvenido");
+    labelBienvenido.setBounds(290,30,200,40);
+    labelBienvenido.setFont(new Font("Andale Mono", 1, 30));
+    labelBienvenido.setForeground(new Color(255,255,255));
+    add(labelBienvenido);
 
-    label3 = new JLabel("Datos del trabajador para el cálculo de vacaciones");
-    label3.setBounds(40,110,620,40);
-    label3.setFont(new Font("Andale Mono", 1, 23));
-    label3.setForeground(new Color(255,255,255));
-    add(label3);
+    labelTitle = new JLabel("Datos del trabajador para el cálculo de vacaciones");
+    labelTitle.setBounds(40,110,620,40);
+    labelTitle.setFont(new Font("Andale Mono", 1, 23));
+    labelTitle.setForeground(new Color(255,255,255));
+    add(labelTitle);
     
-    label4 = new JLabel("Nombre completo:");
-    label4.setBounds(20,160,150,20);
-    label4.setFont(new Font("Andale Mono", 1, 12));
-    label4.setForeground(new Color(255,255,255));
-    add(label4);
+    labelNombre = new JLabel("Nombre(s):");
+    labelNombre.setBounds(20,160,150,20);
+    labelNombre.setFont(new Font("Andale Mono", 1, 13));
+    labelNombre.setForeground(new Color(255,255,255));
+    add(labelNombre);
+
+    txtNombreTrabajador = new JTextField();
+    txtNombreTrabajador.setBounds(20,185,170,25);
+    add(txtNombreTrabajador);
+
+    labelAPaterno = new JLabel("Apellido Paterno:");
+    labelAPaterno.setBounds(20,220,150,20);
+    labelAPaterno.setFont(new Font("Andale Mono", 1, 13));
+    labelAPaterno.setForeground(new Color(255,255,255));
+    add(labelAPaterno);
+
+    txtAPaternoTrabajador = new JTextField();
+    txtAPaternoTrabajador.setBounds(20,245,170,25);
+    add(txtAPaternoTrabajador);
+
+    labelAMaterno = new JLabel("Apellido Materno:");
+    labelAMaterno.setBounds(20,280,150,20);
+    labelAMaterno.setFont(new Font("Andale Mono", 1, 13));
+    labelAMaterno.setForeground(new Color(255,255,255));
+    add(labelAMaterno);
+
+    txtAMaternoTrabajador = new JTextField();
+    txtAMaternoTrabajador.setBounds(20,305,170,25);
+    add(txtAMaternoTrabajador);
+
+    labelDepartamento = new JLabel("Selecciona el Departamento:");
+    labelDepartamento.setBounds(220,160,200,20);
+    labelDepartamento.setFont(new Font("Andale Mono", 1, 13));
+    labelDepartamento.setForeground(new Color(255,255,255));
+    add(labelDepartamento);
+  
+    comboDepartamento = new JComboBox();
+    comboDepartamento.setBounds(220,185,250,25);
+    comboDepartamento.setBackground(new Color(224,224,224));
+    comboDepartamento.setFont(new Font("Andale Mono", 1, 14));
+    comboDepartamento.setForeground(new Color(255,0,0));
+    add(comboDepartamento);
+    comboDepartamento.addItem("Atención al cliente");
+    comboDepartamento.addItem("Departamento de Logística");
+    comboDepartamento.addItem("Departamento de Gerencia");
+
+    labelAntiguedad = new JLabel("Selecciona la Antigüedad:");
+    labelAntiguedad.setBounds(220,220,200,20);
+    labelAntiguedad.setFont(new Font("Andale Mono", 1, 13));
+    labelAntiguedad.setForeground(new Color(255,255,255));
+    add(labelAntiguedad);
+  
+    comboAntiguedad = new JComboBox();
+    comboAntiguedad.setBounds(220,245,250,25);
+    comboAntiguedad.setBackground(new Color(224,224,224));
+    comboAntiguedad.setFont(new Font("Andale Mono", 1, 14));
+    comboAntiguedad.setForeground(new Color(255,0,0));
+    add(comboAntiguedad);
+    comboAntiguedad.addItem("1 año de servicio");
+    comboAntiguedad.addItem("2 a 6 años de servicio");
+    comboAntiguedad.addItem("7 años o más de servicio");
+
+    labelResultado = new JLabel("Resultado del Cálculo:");
+    labelResultado.setBounds(220,280,200,20);
+    labelResultado.setFont(new Font("Andale Mono", 1, 13));
+    labelResultado.setForeground(new Color(255,255,255));
+    add(labelResultado);
+
+    textarea1 = new JTextArea();
+    textarea1.setEditable(false);
+    textarea1.setBackground(new Color(224,224,224));
+    textarea1.setFont(new Font("Andale Mono", 1, 12));
+    textarea1.setForeground(new Color(255,0,0));
+    textarea1.setText("\n   Aquí aparece el resultado del cálculo de las vacaciones.");
+    scrollpane1 = new JScrollPane(textarea1);
+    scrollpane1.setBounds(220,305,400,100);
+    add(scrollpane1);
+
+    labelFooter = new JLabel("©2017 The Coca-Cola Company | Todos los derechos reservados");
+    labelFooter.setBounds(120,450,500,30);
+    labelFooter.setFont(new Font("Andale Mono", 1, 13));
+    labelFooter.setForeground(new Color(255,255,255));
+    add(labelFooter);
+
   }  
 
   public void actionPerformed(ActionEvent e){
     Container fondo = this.getContentPane();
 
-    if(e.getSource() == menuitem1){
+    if(e.getSource() == miRojo){
       fondo.setBackground(new Color(255,0,0));
     }
-    if(e.getSource() == menuitem2){
+    if(e.getSource() == miNegro){
       fondo.setBackground(new Color(0,0,0));
     }
-    if(e.getSource() == menuitem3){
+    if(e.getSource() == miMorado){
       fondo.setBackground(new Color(87,35,100));
     }
-    if(e.getSource() == menuitem5){
+    if(e.getSource() == miSalir){
       System.exit(0);
     }
   }
