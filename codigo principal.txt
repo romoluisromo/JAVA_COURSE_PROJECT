@@ -152,6 +152,7 @@ public class Principal extends JFrame implements ActionListener{
     comboDepartamento.setFont(new Font("Andale Mono", 1, 13));
     comboDepartamento.setForeground(new Color(255,0,0));
     add(comboDepartamento);
+    comboDepartamento.addItem("");
     comboDepartamento.addItem("Atención al cliente");
     comboDepartamento.addItem("Departamento de Logística");
     comboDepartamento.addItem("Departamento de Gerencia");
@@ -168,6 +169,7 @@ public class Principal extends JFrame implements ActionListener{
     comboAntiguedad.setFont(new Font("Andale Mono", 1, 13));
     comboAntiguedad.setForeground(new Color(255,0,0));
     add(comboAntiguedad);
+    comboAntiguedad.addItem("");
     comboAntiguedad.addItem("1 año de servicio");
     comboAntiguedad.addItem("2 a 6 años de servicio");
     comboAntiguedad.addItem("7 años o más de servicio");
