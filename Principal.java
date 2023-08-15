@@ -149,7 +149,7 @@ public class Principal extends JFrame implements ActionListener{
     comboDepartamento = new JComboBox();
     comboDepartamento.setBounds(220,185,250,25);
     comboDepartamento.setBackground(new Color(224,224,224));
-    comboDepartamento.setFont(new Font("Andale Mono", 1, 14));
+    comboDepartamento.setFont(new Font("Andale Mono", 1, 13));
     comboDepartamento.setForeground(new Color(255,0,0));
     add(comboDepartamento);
     comboDepartamento.addItem("Atención al cliente");
@@ -165,7 +165,7 @@ public class Principal extends JFrame implements ActionListener{
     comboAntiguedad = new JComboBox();
     comboAntiguedad.setBounds(220,245,250,25);
     comboAntiguedad.setBackground(new Color(224,224,224));
-    comboAntiguedad.setFont(new Font("Andale Mono", 1, 14));
+    comboAntiguedad.setFont(new Font("Andale Mono", 1, 13));
     comboAntiguedad.setForeground(new Color(255,0,0));
     add(comboAntiguedad);
     comboAntiguedad.addItem("1 año de servicio");
@@ -207,6 +207,15 @@ public class Principal extends JFrame implements ActionListener{
     }
     if(e.getSource() == miMorado){
       fondo.setBackground(new Color(87,35,100));
+    }
+    if(e.getSource() == miNuevo){
+
+    }
+    if(e.getSource() == miCalculo){
+
+    }
+    if(e.getSource() == miElCreador){
+    
     }
     if(e.getSource() == miSalir){
       System.exit(0);
