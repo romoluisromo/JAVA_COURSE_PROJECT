@@ -17,6 +17,7 @@ public class Principal extends JFrame implements ActionListener{
   public Principal(){
     setLayout(null);
     setTitle("Pantalla principal");
+    getContentPane().setBackground(new Color(255,0,0));
     setIconImage(new ImageIcon(getClass().getResource(rutaicon)).getImage());
 
     menubar = new JMenuBar();
@@ -64,12 +65,40 @@ public class Principal extends JFrame implements ActionListener{
  
     ImageIcon logo = new ImageIcon(rutalogo);    
     label1 = new JLabel(logo);
-    label1.setBounds(10,10,300,100);
+    label1.setBounds(5,5,230,80);
     add(label1);
     
+    label2 = new JLabel("Bienvenido");
+    label2.setBounds(290,30,200,40);
+    label2.setFont(new Font("Andale Mono", 1, 30));
+    label2.setForeground(new Color(255,255,255));
+    add(label2);
+
+    label3 = new JLabel("Datos del trabajador para el cálculo de vacaciones");
+    label3.setBounds(40,110,620,40);
+    label3.setFont(new Font("Andale Mono", 1, 23));
+    label3.setForeground(new Color(255,255,255));
+    add(label3);
+    
+    label4 = new JLabel("Nombre completo:");
+    label4.setBounds(20,160,150,20);
+    label4.setFont(new Font("Andale Mono", 1, 12));
+    label4.setForeground(new Color(255,255,255));
+    add(label4);
   }  
 
   public void actionPerformed(ActionEvent e){
+    Container fondo = this.getContentPane();
+
+    if(e.getSource() == menuitem1){
+      fondo.setBackground(new Color(255,0,0));
+    }
+    if(e.getSource() == menuitem2){
+      fondo.setBackground(new Color(0,0,0));
+    }
+    if(e.getSource() == menuitem3){
+      fondo.setBackground(new Color(87,35,100));
+    }
     if(e.getSource() == menuitem5){
       System.exit(0);
     }
@@ -77,7 +106,7 @@ public class Principal extends JFrame implements ActionListener{
 
   public static void main(String args[]){
     Principal principal = new Principal();
-    principal.setBounds(0,0,500,400);
+    principal.setBounds(0,0,650,550);
     principal.setVisible(true);
     principal.setResizable(false);
     principal.setLocationRelativeTo(null);
