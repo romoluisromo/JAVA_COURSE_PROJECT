@@ -16,12 +16,16 @@ public class Principal extends JFrame implements ActionListener{
   private JComboBox comboDepartamento, comboAntiguedad;
   String rutaicon = "images/icon.png";
   String rutalogo = "images/logo-coca.png";
+  String nombreAdministrador = "";
 
   public Principal(){
     setLayout(null);
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
     setTitle("Pantalla principal");
     getContentPane().setBackground(new Color(255,0,0));
     setIconImage(new ImageIcon(getClass().getResource(rutaicon)).getImage());
+    Bienvenida ventanaBienvenida = new Bienvenida();
+    nombreAdministrador = ventanaBienvenida.usuario;
 
     menubar = new JMenuBar();
     menubar.setBackground(new Color(255,0,0));
@@ -98,8 +102,8 @@ public class Principal extends JFrame implements ActionListener{
     labelLogo.setBounds(5,5,230,80);
     add(labelLogo);
     
-    labelBienvenido = new JLabel("Bienvenido");
-    labelBienvenido.setBounds(290,30,200,40);
+    labelBienvenido = new JLabel("Bienvenido " + nombreAdministrador);
+    labelBienvenido.setBounds(290,30,350,40);
     labelBienvenido.setFont(new Font("Andale Mono", 1, 30));
     labelBienvenido.setForeground(new Color(255,255,255));
     add(labelBienvenido);
@@ -212,15 +216,91 @@ public class Principal extends JFrame implements ActionListener{
     }
     if(e.getSource() == miNuevo){
 
+      txtNombreTrabajador.setText("");
+      txtAPaternoTrabajador.setText("");
+      txtAMaternoTrabajador.setText("");
+      comboDepartamento.setSelectedIndex(0);
+      comboAntiguedad.setSelectedIndex(0);
+      textarea1.setText("\n   Aquí aparece el resultado del cálculo de las vacaciones.");
+
     }
     if(e.getSource() == miCalculo){
 
+      String nombreTrabajador = txtNombreTrabajador.getText();
+      String AP = txtAPaternoTrabajador.getText();
+      String AM = txtAMaternoTrabajador.getText();
+      String departamento = comboDepartamento.getSelectedItem().toString();
+      String antiguedad = comboAntiguedad.getSelectedItem().toString();
+
+      if(nombreTrabajador.equals("") || AP.equals("") || AM.equals("") || 
+         departamento.equals("") || antiguedad.equals("")){
+
+        JOptionPane.showMessageDialog(null, "Debes llenar todos los datos"); 
+   
+      } else {
+        
+          if(departamento == "Atención al cliente"){
+      
+              if(antiguedad == "1 año de servicio"){
+                textarea1.setText("\n  El trabajador " + nombreTrabajador + " " + AP + " " + AM + 
+                "\n  tiene derecho a 6 días de vacaciones.");
+
+              } else if(antiguedad == "2 a 6 años de servicio"){
+                textarea1.setText("\n  El trabajador " + nombreTrabajador + " " + AP + " " + AM + 
+                "\n  tiene derecho a 14 días de vacaciones."); 
+           
+              } else if(antiguedad == "7 años o más de servicio"){
+                textarea1.setText("\n  El trabajador " + nombreTrabajador + " " + AP + " " + AM + 
+                "\n  tiene derecho a 20 días de vacaciones.");
+
+              }
+          } else if(departamento == "Departamento de Logística"){
+
+              if(antiguedad == "1 año de servicio"){
+                textarea1.setText("\n  El trabajador " + nombreTrabajador + " " + AP + " " + AM + 
+                "\n  tiene derecho a 7 días de vacaciones.");
+
+              } else if(antiguedad == "2 a 6 años de servicio"){
+                textarea1.setText("\n  El trabajador " + nombreTrabajador + " " + AP + " " + AM + 
+                "\n  tiene derecho a 15 días de vacaciones."); 
+           
+              } else if(antiguedad == "7 años o más de servicio"){
+                textarea1.setText("\n  El trabajador " + nombreTrabajador + " " + AP + " " + AM + 
+                "\n  tiene derecho a 22 días de vacaciones.");
+
+              }           
+
+          } else if(departamento == "Departamento de Gerencia"){
+
+              if(antiguedad == "1 año de servicio"){
+                textarea1.setText("\n  El trabajador " + nombreTrabajador + " " + AP + " " + AM + 
+                "\n  tiene derecho a 10 días de vacaciones.");
+
+              } 
+              if(antiguedad == "2 a 6 años de servicio"){
+                textarea1.setText("\n  El trabajador " + nombreTrabajador + " " + AP + " " + AM + 
+                "\n  tiene derecho a 20 días de vacaciones."); 
+           
+              } 
+              if(antiguedad == "7 años o más de servicio"){
+                textarea1.setText("\n  El trabajador " + nombreTrabajador + " " + AP + " " + AM + 
+                "\n  tiene derecho a 30 días de vacaciones.");
+
+              }   
+          }
+        }
+
     }
     if(e.getSource() == miElCreador){
-    
+      JOptionPane.showMessageDialog(null, "Desarrollado por el Ing. Luis Romo");
     }
     if(e.getSource() == miSalir){
-      System.exit(0);
+      Bienvenida bienvenida = new Bienvenida();
+      bienvenida.setBounds(0,0,350,450);
+      bienvenida.setVisible(true);
+      bienvenida.setResizable(false);
+      bienvenida.setLocationRelativeTo(null);
+      this.setVisible(false);
     }
   }
 

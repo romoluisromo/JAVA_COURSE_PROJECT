@@ -8,9 +8,11 @@ public class Bienvenida extends JFrame implements ActionListener{
   private JTextField textfield1;
   private JButton boton1;
   String rutalogo = "images/logo-coca.png";
+  public static String usuario = "";
 
   public Bienvenida(){
     setLayout(null);
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
     setTitle("Bienvenido");
     getContentPane().setBackground(new Color(255,0,0));
     setIconImage(new ImageIcon(getClass().getResource("images/icon.png")).getImage());
@@ -60,7 +62,17 @@ public class Bienvenida extends JFrame implements ActionListener{
 
   public void actionPerformed(ActionEvent e){
     if(e.getSource() == boton1){
-      System.exit(0);
+      usuario = textfield1.getText().trim(); // El metodo trim borra los espacios despues del texto
+      if(usuario.equals("")){
+        JOptionPane.showMessageDialog(null, "Debes ingresar tu nombre");
+      } else {
+          Licencia licencia = new Licencia();
+          licencia.setBounds(0,0,580,400);
+          licencia.setVisible(true);
+          licencia.setResizable(false);
+          licencia.setLocationRelativeTo(null);
+          this.setVisible(false);
+        }
     }
   }
 

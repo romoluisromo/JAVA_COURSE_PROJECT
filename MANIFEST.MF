@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: Ing. Luis Carlos Romo Valdes
+Main-Class: Bienvenida
+X-COMMENT: Proyecto Curso Java - Generación sistema vacacional de empleados
